@@ -8,12 +8,33 @@
 
 # NOTE: What type of error does python throw if you try to turn a non-number string into an integer?
 # Test it out (or google it!) to see which one. Specifically catch that exception in your code.
+def validate_user_input():
+    entered = input("Please enter a number: ")
+    try:
+        return(int(entered))
+    except ValueError:
+        print("You did not enter a valid number, please try again")
+        return validate_user_input()
 
+'''
+def validate_user_input():
+    # TAs NOTE: there are a few different ways to do this! We don't need to worry about perfect efficiency,
+    # if it works, it works
+    is_num = False
+
+    while not is_num:
+        num = input('Please enter a number: ')
+        try:
+            # `return` breaks out of the while loop (and the function)
+            return int(num)
+        except ValueError:
+            print('You did not enter a valid number, please try again')
+'''
 
 # 1.2 TODO: Once you are done, uncomment the two lines below to ensure that your code works as expected
 
-# user_number = validate_user_input()
-# print(f'The number the user entered is {user_number}.')
+user_number = validate_user_input()
+print(f'The number the user entered is {user_number}.')
 
 
 # 2.1 TODO: Create a function called print_tenth_item that will
@@ -23,9 +44,12 @@
 
 # NOTE: What type of error does python throw if you try to index into a list past the number of items in it?
 # Test it out (or google it!) to see which one. Specifically catch that exception in your code.
-
-
+def print_tenth_item(top_ten : list):
+    try:
+        print(top_ten[9])
+    except IndexError:
+        print("N/A")
 # 2.2 TODO: Once you are done, uncomment the two lines below to ensure that your code works as expected
 
-# print_tenth_item(['a', 'b', 'c'])  # Should print out that there are not ten items in the list
-# print_tenth_item([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12])  # Should print out the 10th item in the list
+print_tenth_item(['a', 'b', 'c'])  # Should print out that there are not ten items in the list
+print_tenth_item([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12])  # Should print out the 10th item in the list
